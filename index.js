@@ -43,3 +43,13 @@ function sumTwoSmallestNumbers(numbers) {
    let arr = [...numbers].sort((a, b) => a - b)
    return arr[0] + arr[1]
 }
+
+
+function openOrSenior(data) {
+   //7kyi 
+   //To be a senior, a member must be at least 55 years old and have a handicap greater than 7. 
+   //In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+   //input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+   //output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
+   return data.map(member => (member[0] >= 55 && member[1] > 7) ? 'Senior' : 'Open')
+}

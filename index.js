@@ -53,3 +53,12 @@ function openOrSenior(data) {
    //output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]
    return data.map(member => (member[0] >= 55 && member[1] > 7) ? 'Senior' : 'Open')
 }
+
+
+function findOutlier(integers) {
+   //6kyi
+   //[2, 4, 0, 100, 4, 11, 2602, 36] -->  11 (the only odd number)
+   //[160, 3, 1719, 19, 11, 13, -21] --> 160 (the only even number)
+   const outlier = integers.filter(item => item % 2 === 0);
+   return outlier.length == 1 ? outlier[0] : integers.filter(item => item % 2 !== 0)[0]
+}

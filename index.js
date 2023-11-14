@@ -36,12 +36,12 @@ function squareDigits(num) {
 
 function nbYear(p0, percent, aug, p) {
    //7kyi
- let n = 0;
- while (p0 < p) {
-   p0 = p0 + Math.floor(p0 * percent / 100) + aug;
-   n++;
- }
- return n;
+   let n = 0;
+   while (p0 < p) {
+      p0 = p0 + Math.floor(p0 * percent / 100) + aug;
+      n++;
+   }
+   return n;
 }
 
 
@@ -71,4 +71,20 @@ function findOutlier(integers) {
    //[160, 3, 1719, 19, 11, 13, -21] --> 160 (the only even number)
    const outlier = integers.filter(item => item % 2 === 0);
    return outlier.length == 1 ? outlier[0] : integers.filter(item => item % 2 !== 0)[0]
+}
+
+function solution(number) {
+   //6kyi
+   //If we list all the natural numbers below 10 that are multiples of 3 or 5, 
+   //we get 3, 5, 6 and 9. The sum of these multiples is 23.
+   //Additionally, if the number is negative, return 0.
+   //If the number is a multiple of both 3 and 5, only count it once.
+   if (number < 0) return 0; //избыточно
+   let sum = 0;
+   for (let i = 1; i < number; i++) {
+      if (Number.isInteger(i / 3) || Number.isInteger(i / 5)) {
+         sum += i;
+      }
+   }
+   return sum;
 }

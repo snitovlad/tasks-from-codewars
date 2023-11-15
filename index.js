@@ -105,3 +105,23 @@ function likes(names) {
        return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
    }
  }
+
+ //task 10
+ function high(x){
+   //6kyi
+   let alphabet = "abcdefghijklmnopqrstuvwxyz";
+   let word = '';
+   let scoreWord = 0;  
+   let arrWords= x.split(' ');
+   for (let i = 0; i < arrWords.length; i++) {
+     let score = 0;
+     for (let j = 0; j < arrWords[i].length; j++) {
+       score += (alphabet.indexOf(arrWords[i].split('')[j]) + 1)
+     }
+     if (scoreWord < score) {
+       word = arrWords[i];
+       scoreWord = score;
+     }
+   }
+   return word;
+ }

@@ -125,3 +125,12 @@ function likes(names) {
    }
    return word;
  }
+
+ //task 11
+ //6kyi countSmileys([':D',':~)',';~D',':)'] ), 4;
+ function countSmileys(arr) {  
+   return arr.filter( el => el.match(/^[:|;][-*|~*]?[)|D]$/)).length   
+ }
+ //^[:|;] в начале фразы или : или ;  Можно было ^[:;]
+ //[-*|~*]? необязательный однократный элемент   Можно было [-~]?
+ //[)|D]$ в конце смайла или ) или D   Можно было [)D]$

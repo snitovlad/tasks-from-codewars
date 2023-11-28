@@ -93,44 +93,73 @@ function solution(number) {
 function likes(names) {
    //6kyi
    switch (names.length) {
-       case 0:
-       return `no one likes this`; //если бы не было return был бы нужен break
-       case 1:
-       return `${names[0]} likes this`;
-       case 2:
-       return `${names[0]} and ${names[1]} like this`;
-       case 3:
-       return `${names[0]}, ${names[1]} and ${names[2]} like this`;
-       default:
-       return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
+      case 0:
+         return `no one likes this`; //если бы не было return был бы нужен break
+      case 1:
+         return `${names[0]} likes this`;
+      case 2:
+         return `${names[0]} and ${names[1]} like this`;
+      case 3:
+         return `${names[0]}, ${names[1]} and ${names[2]} like this`;
+      default:
+         return `${names[0]}, ${names[1]} and ${names.length - 2} others like this`;
    }
- }
+}
 
- //task 10
- function high(x){
+//task 10
+function high(x) {
    //6kyi
    let alphabet = "abcdefghijklmnopqrstuvwxyz";
    let word = '';
-   let scoreWord = 0;  
-   let arrWords= x.split(' ');
+   let scoreWord = 0;
+   let arrWords = x.split(' ');
    for (let i = 0; i < arrWords.length; i++) {
-     let score = 0;
-     for (let j = 0; j < arrWords[i].length; j++) {
-       score += (alphabet.indexOf(arrWords[i].split('')[j]) + 1)
-     }
-     if (scoreWord < score) {
-       word = arrWords[i];
-       scoreWord = score;
-     }
+      let score = 0;
+      for (let j = 0; j < arrWords[i].length; j++) {
+         score += (alphabet.indexOf(arrWords[i].split('')[j]) + 1)
+      }
+      if (scoreWord < score) {
+         word = arrWords[i];
+         scoreWord = score;
+      }
    }
    return word;
- }
+}
 
- //task 11
- //6kyi countSmileys([':D',':~)',';~D',':)'] ), 4;
- function countSmileys(arr) {  
-   return arr.filter( el => el.match(/^[:|;][-*|~*]?[)|D]$/)).length   
- }
- //^[:|;] в начале фразы или : или ;  Можно было ^[:;]
- //[-*|~*]? необязательный однократный элемент   Можно было [-~]?
- //[)|D]$ в конце смайла или ) или D   Можно было [)D]$
+//task 11
+//6kyi countSmileys([':D',':~)',';~D',':)'] ), 4;
+function countSmileys(arr) {
+   return arr.filter(el => el.match(/^[:|;][-*|~*]?[)|D]$/)).length
+}
+//^[:|;] в начале фразы или : или ;  Можно было ^[:;]
+//[-*|~*]? необязательный однократный элемент   Можно было [-~]?
+//[)|D]$ в конце смайла или ) или D   Можно было [)D]$
+
+
+function validBraces(braces) {
+   //task 12
+   //"(){}[]"   =>  True
+   //"([{}])"   =>  True
+   //"(}"       =>  False
+   //"[(])"     =>  False
+   //"[({})](]" =>  False 
+   let string = [...braces.split('')];
+   if (!string.length % 2) return false;
+   for (let i = 0; i < string.length - 1; i++) {
+      if ((string[i] === "(" && string[i + 1] === ")") || (string[i] === "[" && string[i + 1] === "]") ||
+         (string[i] === "{" && string[i + 1] === "}")) {
+         string.splice(i, 2);
+         i = -1;
+      }
+   }
+   if (string.join('') === '') return true;
+   return false
+}
+//Классное решение
+// function validBraces(braces){
+//    while(/\(\)|\[\]|\{\}/g.test(braces)){braces = braces.replace(/\(\)|\[\]|\{\}/g,"")}
+//    return !braces.length;
+//   }
+
+let x = "([{}])"
+x.indexOf('{}')
